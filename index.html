@@ -86,41 +86,6 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
         /* Hero Section */
         .hero {
             padding: 80px 0;
@@ -147,6 +112,36 @@
             gap: 20px;
             justify-content: center;
             margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
         }
 
         .btn-large {
@@ -495,6 +490,54 @@
             font-size: 0.9rem;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -543,16 +586,6 @@
             
             .section-header h2 {
                 font-size: 2rem;
-            }
-            
-            .auth-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
             }
         }
 
@@ -610,16 +643,11 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Image Tools</a></li>
                         <li><a href="#">PDF Tools</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
+                        <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
+                        <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
                     </ul>
                 </nav>
-                
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Login</button>
-                    <button class="btn btn-primary">Sign Up</button>
-                </div>
             </div>
         </div>
     </header>
@@ -902,9 +930,6 @@
                     <ul>
                         <li><a href="#">Image Compressor</a></li>
                         <li><a href="#">Image Converter</a></li>
-                        <li><a href="#">Image Resizer</a></li>
-                        <li><a href="#">Background Remover</a></li>
-                        <li><a href="#">Image Editor</a></li>
                     </ul>
                 </div>
                 
@@ -913,20 +938,15 @@
                     <ul>
                         <li><a href="#">PDF Compressor</a></li>
                         <li><a href="#">PDF to Word</a></li>
-                        <li><a href="#">PDF Merger</a></li>
-                        <li><a href="#">PDF Splitter</a></li>
-                        <li><a href="#">PDF Editor</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
+                        <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
+                        <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -936,6 +956,110 @@
             </div>
         </div>
     </footer>
+
+    <!-- About Us Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
+            <div class="modal-header">
+                <h2>About ToolKit</h2>
+            </div>
+            <p>ToolKit was founded in 2020 with a simple mission: to provide high-quality, easy-to-use file conversion and optimization tools that are completely free and accessible to everyone.</p>
+            
+            <p>Our team of developers and designers are passionate about creating tools that solve real problems for our users. We believe that everyone should have access to powerful file processing tools without having to pay expensive subscription fees or install complicated software.</p>
+            
+            <h3>Our Values</h3>
+            <ul>
+                <li><strong>Simplicity:</strong> We believe tools should be intuitive and easy to use</li>
+                <li><strong>Privacy:</strong> Your files never leave your computer - we process everything locally</li>
+                <li><strong>Quality:</strong> We're committed to providing the best possible results</li>
+                <li><strong>Accessibility:</strong> Our tools are free and work on any device with a web browser</li>
+            </ul>
+            
+            <p>Today, ToolKit serves millions of users worldwide and continues to expand its offerings with new tools and features regularly.</p>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+            </div>
+            <p>We'd love to hear from you! Whether you have a question, feedback, or need support, our team is here to help.</p>
+            
+            <h3>Get in Touch</h3>
+            <p><strong>Email:</strong> support@toolkit.com</p>
+            <p><strong>Twitter:</strong> @toolkit</p>
+            <p><strong>Facebook:</strong> facebook.com/toolkit</p>
+            
+            <h3>Report an Issue</h3>
+            <p>If you're experiencing problems with any of our tools, please contact us at bugs@toolkit.com with the following information:</p>
+            <ul>
+                <li>Which tool you were using</li>
+                <li>What you were trying to do</li>
+                <li>What went wrong</li>
+                <li>The type of device and browser you're using</li>
+            </ul>
+            
+            <h3>Feature Requests</h3>
+            <p>Have an idea for a new tool or feature? We're always looking for ways to improve! Send your suggestions to ideas@toolkit.com.</p>
+            
+            <p>We typically respond to all inquiries within 24-48 hours.</p>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+            </div>
+            <p>Last Updated: January 1, 2023</p>
+            
+            <p>At ToolKit, we take your privacy seriously. This policy explains how we handle your data when you use our website and tools.</p>
+            
+            <h3>Information We Don't Collect</h3>
+            <p>The most important thing to know about ToolKit is that we process all files locally in your browser. This means:</p>
+            <ul>
+                <li>Your files never leave your computer</li>
+                <li>We never upload your files to our servers</li>
+                <li>We don't have access to your files</li>
+                <li>We don't store your files</li>
+            </ul>
+            
+            <h3>Information We Do Collect</h3>
+            <p>We collect minimal information to help us improve our services:</p>
+            <ul>
+                <li><strong>Usage Analytics:</strong> We use anonymous analytics to understand how people use our tools so we can improve them</li>
+                <li><strong>Error Reports:</strong> If a tool crashes, we may receive an anonymous error report to help us fix the issue</li>
+                <li><strong>Basic Device Information:</strong> We collect information about your browser and device to ensure our tools work correctly</li>
+            </ul>
+            
+            <h3>Cookies</h3>
+            <p>We use a minimal number of cookies to:</p>
+            <ul>
+                <li>Remember your preferences</li>
+                <li>Provide analytics about how our tools are used</li>
+                <li>Ensure the proper functioning of our website</li>
+            </ul>
+            
+            <h3>Third-Party Services</h3>
+            <p>We use a few trusted third-party services:</p>
+            <ul>
+                <li><strong>Google Analytics:</strong> To understand how our website is used</li>
+                <li><strong>Cloudflare:</strong> For content delivery and security</li>
+            </ul>
+            
+            <h3>Changes to This Policy</h3>
+            <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at privacy@toolkit.com.</p>
+        </div>
+    </div>
 
     <script>
         // Mobile menu toggle
@@ -965,6 +1089,28 @@
                         top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
+                }
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
         });
