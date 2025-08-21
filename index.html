@@ -1,676 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolKit - Your All-in-One Image & PDF Solution</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #7209b7;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-        }
-
-        body {
-            background-color: #f9fafb;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            color: var(--success);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--gray);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .btn-large {
-            padding: 15px 30px;
-            font-size: 1.1rem;
-        }
-
-        .tool-categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            width: 280px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .category-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .category-card a {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            z-index: 1;
-        }
-
-        .category-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            transition: all 0.3s;
-        }
-
-        .category-card:hover .category-icon {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        .category-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-            transition: all 0.3s;
-        }
-
-        .category-card:hover h3 {
-            color: var(--primary);
-        }
-
-        .category-card p {
-            color: var(--gray);
-            transition: all 0.3s;
-        }
-
-        /* Tools Section */
-        .tools-section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        .section-header p {
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .tool-image {
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .tool-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .tool-card:hover .tool-image img {
-            transform: scale(1.05);
-        }
-
-        .tool-content {
-            padding: 25px;
-        }
-
-        .tool-content h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .tool-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .tool-link {
-            display: inline-block;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .tool-link:hover {
-            color: var(--accent);
-        }
-
-        .tool-link i {
-            margin-left: 5px;
-            transition: transform 0.3s;
-        }
-
-        .tool-link:hover i {
-            transform: translateX(5px);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--gray);
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: """;
-            font-size: 60px;
-            color: var(--primary);
-            opacity: 0.2;
-            position: absolute;
-            top: -20px;
-            left: -15px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-details h4 {
-            color: var(--dark);
-        }
-
-        .author-details p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--success);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-column a {
-            color: var(--light-gray);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            nav ul {
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tool-categories {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            nav {
-                display: none;
-                width: 100%;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools Landing Page</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9fafb;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4f46e5;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s;
+    }
+
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    .btn-outline {
+      border: 2px solid #4f46e5;
+      color: #4f46e5;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #4f46e5;
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 50px;
+      background: linear-gradient(135deg, #eef2ff, #ffffff);
+    }
+
+    .hero-content {
+      max-width: 50%;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+
+    .hero p {
+      margin-bottom: 30px;
+      color: #4b5563;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .hero img {
+      max-width: 45%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Features */
+    .features {
+      padding: 60px 50px;
+      background: white;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #1f2937;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      padding: 20px;
+      background: #f3f4f6;
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+      color: #4f46e5;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 60px 50px;
+      background: #4f46e5;
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: #1f2937;
+      color: #d1d5db;
+      padding: 30px 50px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-tools"></i>
-                    <span>ToolKit</span>
-                </div>
-                
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Image Tools</a></li>
-                        <li><a href="#">PDF Tools</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">AI Tools</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>All Your Image & PDF Tools in One Place</h1>
-            <p>Free online tools to compress, convert, edit, and enhance your images and PDF documents with ease.</p>
-            
-            <div class="hero-buttons">
-                <button class="btn btn-primary btn-large">Explore Image Tools</button>
-                <button class="btn btn-primary btn-large">Discover PDF Tools</button>
-            </div>
-            
-            <div class="tool-categories">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-compress-alt"></i>
-                    </div>
-                    <h3>Compression</h3>
-                    <p>Reduce file size without losing quality</p>
-                    <a href="#compression-tools"></a>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Conversion</h3>
-                    <p>Convert between different formats</p>
-                    <a href="#conversion-tools"></a>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-edit"></i>
-                    </div>
-                    <h3>Editing</h3>
-                    <p>Edit and enhance your files</p>
-                    <a href="#editing-tools"></a>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Security</h3>
-                    <p>Protect your sensitive documents</p>
-                    <a href="#security-tools"></a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Boost Your Productivity with AI</h1>
+      <p>Discover the most powerful AI tools designed to save you time, enhance creativity, and supercharge your workflow.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Start Free Trial</button>
+        <button class="btn btn-outline">Learn More</button>
+      </div>
+    </div>
+    <img src="https://source.unsplash.com/600x400/?artificial-intelligence" alt="AI Tools">
+  </section>
 
-    <!-- Sections remain unchanged (Compression, Conversion, Features, Testimonials, Footer) -->
+  <!-- Features -->
+  <section class="features">
+    <h2>Why Choose Our Tools?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>⚡ Fast Performance</h3>
+        <p>Experience blazing fast AI-powered solutions tailored for your needs.</p>
+      </div>
+      <div class="feature">
+        <h3>🎨 Creative Solutions</h3>
+        <p>Unlock unique ideas and designs with our advanced AI creativity suite.</p>
+      </div>
+      <div class="feature">
+        <h3>🔒 Secure & Reliable</h3>
+        <p>Your data is safe with our enterprise-grade security measures.</p>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('mobileMenuBtn');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', function() {
-                document.getElementById('mainNav').classList.toggle('active');
-            });
-        }
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Get Started?</h2>
+    <p>Join thousands of professionals using our AI tools to transform their workflow.</p>
+    <button class="btn btn-primary">Get Started</button>
+  </section>
 
-        // Smooth scrolling for category links
-        document.querySelectorAll('.category-card a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 AI Tools. All rights reserved.</p>
+  </footer>
 </body>
 </html>
