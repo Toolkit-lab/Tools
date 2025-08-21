@@ -16,8 +16,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            color: #333;
+            background: linear-gradient(135deg, #0a2463, #1565c0, #42a5f5);
+            color: #f5f5f5;
             line-height: 1.6;
             min-height: 100vh;
             padding-bottom: 20px;
@@ -57,10 +57,11 @@
         
         .tool-container {
             flex: 1 1 700px;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             padding: 25px;
+            color: #2c3e50;
         }
         
         .ad-space {
@@ -80,37 +81,42 @@
             justify-content: center;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #90caf9;
         }
         
         .ad-unit p {
-            color: #777;
+            color: #546e7a;
             font-size: 0.9rem;
         }
         
         .upload-area {
-            border: 3px dashed #4a86e8;
+            border: 3px dashed #1976d2;
             border-radius: 10px;
             padding: 40px 20px;
             text-align: center;
             margin-bottom: 25px;
             transition: all 0.3s;
-            background: #f8f9fa;
+            background: #e3f2fd;
         }
         
         .upload-area:hover {
-            background: #e8f0fe;
-            border-color: #3b71ca;
+            background: #bbdefb;
+            border-color: #0d47a1;
         }
         
         .upload-area i {
             font-size: 60px;
-            color: #4a86e8;
+            color: #1976d2;
             margin-bottom: 15px;
         }
         
         .upload-area h3 {
             margin-bottom: 15px;
-            color: #333;
+            color: #1565c0;
+        }
+        
+        .upload-area p {
+            color: #546e7a;
         }
         
         .file-input {
@@ -118,7 +124,7 @@
         }
         
         .upload-btn {
-            background: #4a86e8;
+            background: #1976d2;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -126,10 +132,12 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 15px;
         }
         
         .upload-btn:hover {
-            background: #3b71ca;
+            background: #1565c0;
+            box-shadow: 0 4px 8px rgba(21, 101, 192, 0.3);
         }
         
         .compression-controls {
@@ -144,7 +152,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #444;
+            color: #1976d2;
         }
         
         .slider-container {
@@ -158,7 +166,7 @@
             -webkit-appearance: none;
             height: 8px;
             border-radius: 5px;
-            background: #d9dadb;
+            background: #bbdefb;
             outline: none;
         }
         
@@ -167,13 +175,15 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #4a86e8;
+            background: #1976d2;
             cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .compression-level {
             font-weight: 600;
-            color: #4a86e8;
+            color: #1976d2;
             min-width: 80px;
         }
         
@@ -190,18 +200,19 @@
         
         .video-preview h4 {
             margin-bottom: 10px;
-            color: #444;
+            color: #1976d2;
         }
         
         .video-placeholder {
             width: 100%;
-            background: #eee;
+            background: #e3f2fd;
             border-radius: 8px;
             aspect-ratio: 16/9;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #777;
+            color: #546e7a;
+            border: 1px solid #bbdefb;
         }
         
         .video-info {
@@ -210,20 +221,22 @@
         
         .video-info h4 {
             margin-bottom: 10px;
-            color: #444;
+            color: #1976d2;
         }
         
         .info-card {
-            background: #f8f9fa;
+            background: #e3f2fd;
             border-radius: 8px;
             padding: 15px;
+            border: 1px solid #bbdefb;
         }
         
         .info-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #bbdefb;
+            color: #37474f;
         }
         
         .info-row:last-child {
@@ -237,7 +250,7 @@
         }
         
         .compress-btn {
-            background: #4a86e8;
+            background: #1976d2;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -246,14 +259,16 @@
             cursor: pointer;
             transition: background 0.3s;
             flex: 1;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
         }
         
         .compress-btn:hover {
-            background: #3b71ca;
+            background: #1565c0;
+            box-shadow: 0 6px 12px rgba(21, 101, 192, 0.4);
         }
         
         .download-btn {
-            background: #34a853;
+            background: #2196f3;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -262,15 +277,18 @@
             cursor: pointer;
             transition: background 0.3s;
             flex: 1;
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
         }
         
         .download-btn:hover {
-            background: #2d8d47;
+            background: #1e88e5;
+            box-shadow: 0 6px 12px rgba(30, 136, 229, 0.4);
         }
         
         .download-btn:disabled {
-            background: #a9c9b4;
+            background: #90caf9;
             cursor: not-allowed;
+            box-shadow: none;
         }
         
         .features {
@@ -282,21 +300,23 @@
         
         .feature-card {
             flex: 1 1 250px;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            color: #2c3e50;
+            border: 1px solid #bbdefb;
         }
         
         .feature-card i {
             font-size: 40px;
-            color: #4a86e8;
+            color: #1976d2;
             margin-bottom: 15px;
         }
         
         .feature-card h3 {
             margin-bottom: 15px;
-            color: #333;
+            color: #1565c0;
         }
         
         footer {
@@ -337,8 +357,8 @@
             display: none;
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #4a86e8;
+            border: 5px solid #e3f2fd;
+            border-top: 5px solid #1976d2;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 20px auto;
@@ -350,9 +370,28 @@
         }
         
         /* Compression level colors */
-        .level-low { color: #34a853; }
-        .level-medium { color: #f9ab00; }
-        .level-high { color: #ea4335; }
+        .level-low { color: #42a5f5; }
+        .level-medium { color: #1976d2; }
+        .level-high { color: #0d47a1; }
+        
+        /* Ad unit styling */
+        .ad-label {
+            color: #1976d2;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .ad-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #e3f2fd;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #546e7a;
+            border: 1px dashed #90caf9;
+        }
     </style>
 </head>
 <body>
@@ -436,24 +475,22 @@
             
             <div class="ad-space">
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        <p>Advertisement</p>
-                        <div style="width: 100%; height: 100%; background: #f1f1f1; display: flex; justify-content: center; align-items: center;">
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                        <p class="ad-label">Advertisement</p>
+                        <div class="ad-placeholder">
                             <p>AdSense Ad Unit</p>
                         </div>
-                        <p style="font-size: 0.7rem; margin-top: 10px;">Ad unit ID: <span id="adUnitId">ca-pub-example</span></p>
+                        <p style="font-size: 0.7rem; margin-top: 10px; color: #546e7a;">Ad unit ID: <span>ca-pub-example</span></p>
                     </div>
                 </div>
                 
                 <div class="ad-unit">
-                    <!-- Another ad unit -->
-                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        <p>Advertisement</p>
-                        <div style="width: 100%; height: 100%; background: #f1f1f1; display: flex; justify-content: center; align-items: center;">
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                        <p class="ad-label">Advertisement</p>
+                        <div class="ad-placeholder">
                             <p>AdSense Ad Unit</p>
                         </div>
-                        <p style="font-size: 0.7rem; margin-top: 10px;">Ad unit ID: <span id="adUnitId2">ca-pub-example2</span></p>
+                        <p style="font-size: 0.7rem; margin-top: 10px; color: #546e7a;">Ad unit ID: <span>ca-pub-example2</span></p>
                     </div>
                 </div>
             </div>
